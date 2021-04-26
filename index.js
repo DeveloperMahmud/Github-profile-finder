@@ -2,7 +2,7 @@ const CLIENT_ID = '6fabaee70618d8addd6a';
 const CLIENT_SECRET = '226b252815b4c15c81a2d693fd6806e9b83f88ac';
 
 async function getUser(name){
-    const res = await fetch(`https://api.github.com/users/${name}?client_id=${CLIENT_ID}&cliend_secret=${CLIENT_SECRET}`);
+    const res = await fetch(`https://api.github.com/users/${name}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`);
 
     const profile = await res.json();
 
@@ -11,7 +11,7 @@ async function getUser(name){
 
 async function getRepos(profile){
     const res = await fetch(
-        `${profile.repos_url}?client_id=${CLIENT_ID}&cliend_secret=${CLIENT_SECRET}&per_page=10`
+        `${profile.repos_url}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&per_page=10`
     );
     const repo = await res.json();
     return repo;
@@ -45,7 +45,7 @@ document.querySelector('#search').addEventListener('submit', async(e) => {
         document.querySelector('#findByUsername').value = '';
     }
 
-});
+})
 
 function showProfile(profile){
     document.querySelector('.profile').innerHTML = `
