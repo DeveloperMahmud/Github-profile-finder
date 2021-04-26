@@ -44,7 +44,7 @@ document.querySelector('#search').addEventListener('submit', async(e) => {
         }
 
         
-    const username = document.querySelector('#findByUsername').value = '';s
+    const username = document.querySelector('#findByUsername').value = '';
     }
 
 })
