@@ -22,20 +22,18 @@ document.querySelector('#search').addEventListener('submit', async(e) => {
     e.preventDefault();
     const username = document.querySelector('#findByUsername').value;
 
-    const profile = await getUser(username);
     
     if(username.length > 0){
         document.querySelector('.loader').style.display = 'block';
-        document.querySelector('.notFound').style.display = 'none';
         document.querySelector('.user-details').style.display = 'none';
+        document.querySelector('.notFound').style.display = 'none';
         
+        const profile = await getUser(username);
         
         document.querySelector('.loader').style.display = 'none';
         
         if(profile.message ==='Not Found'){
             document.querySelector('.notFound').style.display = 'block';
-            
-            
         }else{
             const repos = await getRepos(profile);
             document.querySelector('.user-details').style.display = 'flex';
@@ -44,11 +42,10 @@ document.querySelector('#search').addEventListener('submit', async(e) => {
             showRepos(repos);
         }
 
-        
-    const username = document.querySelector('#findByUsername').value = '';
+        document.querySelector('#findByUsername').value = '';
     }
 
-})
+});
 
 function showProfile(profile){
     document.querySelector('.profile').innerHTML = `
