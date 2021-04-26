@@ -22,12 +22,13 @@ document.querySelector('#search').addEventListener('submit', async(e) => {
     e.preventDefault();
     const username = document.querySelector('#findByUsername').value;
 
+    const profile = await getUser(username);
+    
     if(username.length > 0){
         document.querySelector('.loader').style.display = 'block';
         document.querySelector('.notFound').style.display = 'none';
         document.querySelector('.user-details').style.display = 'none';
         
-        const profile = await getUser(username);
         
         document.querySelector('.loader').style.display = 'none';
         
